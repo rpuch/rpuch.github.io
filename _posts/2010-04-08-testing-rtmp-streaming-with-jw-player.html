@@ -1,0 +1,13 @@
+---
+layout: post
+title: Testing RTMP streaming with JW Player
+date: '2010-04-08T22:31:00.001+04:00'
+author: rpuchkovskiy
+tags:
+- testing RTMP streaming JW Player flash
+modified_time: '2010-04-08T23:05:40.610+04:00'
+blogger_id: tag:blogger.com,1999:blog-4160252863216482620.post-3359607437181600607
+blogger_orig_url: https://rpuchkovskiy.blogspot.com/2010/04/testing-rtmp-streaming-with-jw-player.html
+---
+
+When configuring an RTMP streaming in Flash Player (see <a href="http://rpuchkovskiy.blogspot.com/2010/04/streaming-h264-video-from-cloudfront-to.html">previous post</a> for an example), I will use the same examples in this post), it may be hard to tell why it does not work: was URL incorrect? Or you just missed something in your player? In such a case it may be helpful to use <a href="http://www.longtailvideo.com/support/jw-player-setup-wizard">JW Player online player constructor</a>.<br /><ol><li>Go to <a href="http://www.longtailvideo.com/support/jw-player-setup-wizard">http://www.longtailvideo.com/support/jw-player-setup-wizard</a></li><li>Select <b>flvplayer with an rtmp stream</b></li><li>In <b>File properties</b> section, set <b>File</b> to your stream name, like 'video1.flv' or 'mp4:video2.mp4' (without quotes)</li><li>In <b>External Communitation</b> section, set <b>streamer</b> to the part of URL without your stream name, like rtmp://abcdefghijklmn.cloudfront.net/cfx/st </li><li>Press <b>Update Preview &amp; Code</b> button</li><li>Press on the player below. If it plays your video correctly, then your bucket+distribution are configured correctly and URL is correct, too</li></ol>Note that values for <b>streamer</b> on step 4 and for <b>file</b> on step 3 give you the full streaming URL when concatenated through a slash (/) as described in the <span class="translation">aforementioned post.</span>

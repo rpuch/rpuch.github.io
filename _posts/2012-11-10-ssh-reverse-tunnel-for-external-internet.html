@@ -1,0 +1,12 @@
+---
+layout: post
+title: ssh reverse tunnel for external internet
+date: '2012-11-10T00:03:00.001+04:00'
+author: rpuchkovskiy
+tags: 
+modified_time: '2012-11-10T00:03:08.479+04:00'
+blogger_id: tag:blogger.com,1999:blog-4160252863216482620.post-596758408797529558
+blogger_orig_url: https://rpuchkovskiy.blogspot.com/2012/11/ssh-reverse-tunnel-for-external-internet.html
+---
+
+Today I needed to create an ssh reverse tunnel, so when someone connects to a server's port, he is forwarded to my PC's port. A usual thing, nothing special.<br />I googled a bit and found a lot of examples.<br /><br /><blockquote class="tr_bq"><span style="font-family: Courier New, Courier, monospace;">ssh -R 8888:localhost:80 user@host.com</span></blockquote><br />So when a TCP connection is opened to host.com:8888, it actually gets forwarded to my localhost:80.<br /><br />Pretty simple. But it did not work.<br /><br />After googling and googling and finding all the same simple but not working examples, I finally did the right thing: reading manual.<br />It turned out that when server-side bind address is not specified (as it is in my case) it binds to 127.0.0.1 which is not visible from the outside internet. You can specify * or empty string as bind address to make sshd bind to all interfaces, or even specify an IP address to bind to, <b>but any of these will work only if sshd server has&nbsp;GatewayPorts enabled</b>.<br /><br />Okay, after adding the following line<br /><blockquote class="tr_bq"><span style="font-family: Courier New, Courier, monospace;">GatewayPorts on</span></blockquote>to the /etc/ssh/sshd_config and restarting sshd it has started to work. Command is:<br /><blockquote class="tr_bq"><span style="font-family: Courier New, Courier, monospace;">ssh -R *:8888:localhost:80 user@host.com</span></blockquote>One more little thing learned.

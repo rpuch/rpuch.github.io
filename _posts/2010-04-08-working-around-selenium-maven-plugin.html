@@ -1,0 +1,13 @@
+---
+layout: post
+title: Working around a Selenium Maven plugin problem on Firefox 3
+date: '2010-04-08T22:57:00.003+04:00'
+author: rpuchkovskiy
+tags:
+- selenium maven plugin firefox 3 1.0.1 workaround
+modified_time: '2010-04-08T23:04:58.511+04:00'
+blogger_id: tag:blogger.com,1999:blog-4160252863216482620.post-6052082994313554517
+blogger_orig_url: https://rpuchkovskiy.blogspot.com/2010/04/working-around-selenium-maven-plugin.html
+---
+
+A couple of days ago I tried <a href="http://www.springsource.org/roo">Spring Roo</a>. Its <a href="http://static.springsource.org/spring-roo/reference/html/intro.html#intro-first-steps">ten-minute tutorial</a> offers you to run <a href="http://seleniumhq.org/">Selenium</a> tests using the following command:<br /><blockquote style="font-family: &quot;Courier New&quot;,Courier,monospace;">mvn selenium:selenese</blockquote>I launched it, but console window freezed and nothing happened.<br />Looks like it's a problem with Selenium+Firefox 3 (possibly also Ubuntu).<br />For me, a solution was simple: just change selenium-maven-plugin version to 1.0.1 (which is the most recent stable version at the time of writing). So plugin definition in Roo-generated application's pom.xml will look like<br /><blockquote style="font-family: &quot;Courier New&quot;,Courier,monospace;">&lt;plugin&gt;<br />&nbsp;&nbsp; &lt;groupid&gt;org.codehaus.mojo&lt;/groupid&gt;<br />&nbsp;&nbsp; &lt;artifactid&gt;selenium-maven-plugin&lt;/artifactid&gt;<br />&nbsp;&nbsp; &lt;version&gt;1.0.1&lt;/version&gt;<br />&nbsp;&nbsp; &lt;configuration&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp; &lt;suite&gt;src/main/webapp/selenium/test-suite.xhtml&lt;/suite&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp; &lt;browser&gt;*firefox&lt;/browser&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp; &lt;results&gt;${project.build.directory}/target/selenium.txt&lt;/results&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp; &lt;starturl&gt;http://localhost:4444/&lt;/starturl&gt;<br />&nbsp;&nbsp; &lt;/configuration&gt;<br />&lt;/plugin&gt;</blockquote>The same applies to using Selenium on Ubuntu+Firefox 3 through JUnit tests: I had to use version 1.0.1 of selenium-maven-plugin to make this work.
