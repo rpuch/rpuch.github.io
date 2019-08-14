@@ -1,3 +1,4 @@
 theme: minima
 title: Roman's blog on tech
 description: Blog description
+show_excerpts: true
