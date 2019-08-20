@@ -1,5 +1,9 @@
 theme: minima
 title: Roman's blog on tech
+url: https://blog.rpuch.com
+
+disqus:
+  shortname: blog-rpuch-com
 
 show_excerpts: true
 minima:
