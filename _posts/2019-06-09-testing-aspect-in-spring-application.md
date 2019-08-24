@@ -26,7 +26,7 @@ Actually, there are two things that are interesting from the testing perspective
 Even the first of them is not so easy to test because you need an instance of
 `ProceedingJoinPoint` which is cumbersome to implement or mock (and it is not recommended to mock external
 interfaces, as it is explained in
-[Growing Object-Oriented Software, Guided by Tests](http://www.informit.com/store/growing-object-oriented-software-guided-by-tests-9780321503626),
+<a target="_blank" href="http://www.informit.com/store/growing-object-oriented-software-guided-by-tests-9780321503626">Growing Object-Oriented Software, Guided by Tests)</a>,
 for example).
 
 ### The solution
