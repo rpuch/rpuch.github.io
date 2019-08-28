@@ -68,7 +68,7 @@ You write a 'sunny day scenario' test, and everything works as expected.
 But what if an exception occur somewhere at the database level?
 
 You model this situation with `.thenReturn(Flux.error(new RuntimeException("Oops)))` and... you don't see anything
-'erroneous' in your test! How come?
+'erroneous' in your test output! How come?
 
 Well, when a stream channel between a user agent and a server is already established, the response is already
 committed, so you just cannot change the response code when an exception is encountered *inside* the reactive
@@ -85,6 +85,8 @@ I don't know whether it is a bug or it is an intended behavior.
  To do it, we could employ `ServerSentEvent` class.
  
  ## Take two, error handling
+ 
+ Expand the code a little:
  
  ```java
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
