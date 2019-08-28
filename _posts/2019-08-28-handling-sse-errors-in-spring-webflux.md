@@ -77,18 +77,16 @@ More than that, even if Spring Webflux is potentially able to detect
 just before establishing the channel that the `Flux` is erroneous, it refuses to do so and just ignores the failure.
 I don't know whether it is a bug or it is an intended behavior.
  
- The bottomline is that if we want to somehow signal to the client that some error have happened, we have to use
- the established channel for this. To do it, we can just return an error message instead of a DTO. To allow the
- client to distinguish the erroneous case from the normal one, we can use 'event' mechanism of the
- `Server-Sent-Events`.
+The bottomline is that if we want to somehow signal to the client that some error have happened, we have to use
+the established channel for this. To do it, we can just return an error message instead of a DTO. To allow the
+client to distinguish the erroneous case from the normal one, we can use 'event' mechanism of the
+`Server-Sent-Events`.
  
- To do it, we could employ `ServerSentEvent` class.
+To do it, we could employ `ServerSentEvent` class.
  
- ## Take two, error handling
+## Take two, error handling
  
- Expand the code a little:
- 
- ```java
+```java
     @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ServerSentEvent<Object>> stream() {
         return personSevice.personDtosFlux()
