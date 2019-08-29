@@ -122,4 +122,4 @@ data: Oops
 It has been demonstrated how you can handle errors in a `Server-Sent-Events` stream in SpringWebFlux.
 
 How do you test such a controller?
-The [following article](2019-08-29-unit-testing-spring-webflux-streaming-controller) explains the matter.
+The [following article]({% post_url 2019-08-29-unit-testing-spring-webflux-streaming-controller %}) explains the matter.
