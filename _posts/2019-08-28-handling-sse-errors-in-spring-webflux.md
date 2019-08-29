@@ -79,7 +79,7 @@ I don't know whether it is a bug or it is an intended behavior.
  
 The bottomline is that if we want to somehow signal to the client that some error have happened, we have to use
 the established channel for this. To do it, we can just return an error message instead of a DTO. To allow the
-client to distinguish the erroneous case from the normal one, we can use 'event' mechanism of the
+clien1t to distinguish the erroneous case from the normal one, we can use 'event' mechanism of the
 `Server-Sent-Events`.
  
 To do it, we could employ `ServerSentEvent` class.
@@ -116,3 +116,10 @@ Here is how the output could look like:
 event: internal-error
 data: Oops
 ```
+
+## Conclusion
+
+It has been demonstrated how you can handle errors in a `Server-Sent-Events` stream in SpringWebFlux.
+
+How do you test such a controller?
+The [following article](2019-08-29-unit-testing-spring-webflux-streaming-controller) explains the matter.
