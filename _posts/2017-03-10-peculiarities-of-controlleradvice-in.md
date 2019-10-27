@@ -11,6 +11,7 @@ tags:
 modified_time: '2017-03-10T23:07:19.687+03:00'
 blogger_id: tag:blogger.com,1999:blog-4160252863216482620.post-6742828658983487732
 blogger_orig_url: https://rpuchkovskiy.blogspot.com/2017/03/peculiarities-of-controlleradvice-in.html
+excerpt_separator: <!--more-->
 ---
 
 ### What is @ControllerAdvice?
@@ -21,6 +22,8 @@ blogger_orig_url: https://rpuchkovskiy.blogspot.com/2017/03/peculiarities-of-con
 
 For example, it can be used for a centralized exception control (with `@ExceptionHandler` annotation).
 This post will concentrate on this use.
+
+<!--more-->
 
 ### Global and specific advices
 
