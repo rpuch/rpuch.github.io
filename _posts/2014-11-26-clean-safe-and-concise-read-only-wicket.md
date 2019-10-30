@@ -13,6 +13,7 @@ tags:
 modified_time: '2014-11-26T21:42:23.901+03:00'
 blogger_id: tag:blogger.com,1999:blog-4160252863216482620.post-8700908848124778459
 blogger_orig_url: https://rpuchkovskiy.blogspot.com/2014/11/clean-safe-and-concise-read-only-wicket.html
+excerpt_separator: <!--more-->
 ---
 
 <a href="http://wicket.apache.org/" target="_blank">Wicket framework</a> uses models
@@ -64,6 +65,8 @@ public class AbstractReadOnlyModelPanel extends Panel {
  
 Straight-forward, type-safe, but not too concise: each label requires 6 lines of code! Of course, we can reduce this
 count using some optimized coding conventions and so on, but anyway, anonymous classes are very verbose.
+
+<!--more-->
 
 A more economical way (in terms of lines and characters to type and read) is
 <a href="https://wicket.apache.org/apidocs/1.4/org/apache/wicket/model/PropertyModel.html" target="_blank">PropertyModel</a>.
