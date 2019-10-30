@@ -11,7 +11,7 @@ tags:
 excerpt_separator: <!--more-->
 ---
 
-Continuing on the [soft-delete repositories topic]({% post_url 2019-10-30-spring-data-elasticsearch-soft-delete-repositories %}),
+Continuing on the [soft-delete repositories topic]({% post_url 2019-10-27-spring-data-mongo-soft-delete-repositories %}),
 let's look at Elasticsearch.
 
 It has [Spring Data support](https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/#reference).
