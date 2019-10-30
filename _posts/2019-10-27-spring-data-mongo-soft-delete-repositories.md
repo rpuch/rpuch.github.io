@@ -189,4 +189,5 @@ Absolutely the same. You just need to use reactive counterparts (`ReactiveMongoO
 ## Other Spring Data modules?
 
 [A follow-up]({% post_url 2019-10-30-spring-data-elasticsearch-soft-delete-repositories %}) that explains how to achieve
-the same for [Elasticsearch](https://www.elastic.co/)
+the same for [Elasticsearch](https://www.elastic.co/) and
+[Spring Data Elasticsearch](https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/#reference)

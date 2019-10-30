@@ -147,3 +147,9 @@ Same as above, this is done via custom repository implementation.
 ## How about reactive repositories?
 
 Absolutely the same. You just need to use reactive counterparts (`ReactiveElasticsearchOperations`, `ReactiveElasticsearchRepository` and so on).
+
+## Other Spring Data modules?
+
+[The previous post]({% post_url 2019-10-27-spring-data-mongo-soft-delete-repositories %}) explains how to achieve
+the same for [MongoDB](https://www.mongodb.com/) and
+[Spring Data MongoDB](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#reference)
