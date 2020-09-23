@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Compiling Netty with DNS support to native image in 2020
+title: Compiling Netty-enabled application with DNS support to native image in 2020
 date: '2020-09-23T21:08:00.000+04:00'
 author: rpuchkovskiy
 tags:
