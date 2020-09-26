@@ -266,7 +266,9 @@ Build fails with the following error:
 
 `DnsNameResolver:659` is
 
+```java
     return LOCALHOST_ADDRESS;
+```
 
 and it references the static field named `LOCALHOST_ADDRESS` of type `InetAddress`. Let's avoid its initialization
 at build time by adding the following to the `native-image` command`:
@@ -299,7 +301,9 @@ Now there is another one:
 
 `DnsNameResolverBuilder:56` is
 
+```java
     private HostsFileEntriesResolver hostsFileEntriesResolver = HostsFileEntriesResolver.DEFAULT;
+```
 
 Let's postpone `HostsFileEntriesResolver` initialization:
 
@@ -319,6 +323,7 @@ Now, there is another error:
 `LOCALHOST4` and `LOCALHOST6` contain instances of `Inet4Address` and `Inet6Address`, respectively. This can be solved
 by a *substitution*. We just add the following class to our project:
 
+```java
     @TargetClass(NetUtil.class)
     final class NetUtilSubstitutions {
         @Alias
@@ -375,6 +380,7 @@ by a *substitution*. We just add the following class to our project:
             }
         }
     }
+```
 
 The idea is to replace loads of the problematic fields with method invocations controlled by us. This is achieved
 via a substitution (note `@TargetClass`, `@Alias` and `@InjectAccessors`). As a result, the `InetAddress` values
@@ -396,6 +402,7 @@ As it can be seen from the code of `InternetProtocolFamily`, each enum constant 
 so if any class initialized at build time initializes `InternetProtocolFamily`, the image heap gets polluted with
 `InetAddress` instance. This can also be solved with a substitution:
 
+```java
     @TargetClass(InternetProtocolFamily.class)
     final class InternetProtocolFamilySubstitutions {
         @Alias
@@ -419,6 +426,7 @@ so if any class initialized at build time initializes `InternetProtocolFamily`, 
             }
         }
     }
+```
 
 The error goes away.
 
@@ -492,6 +500,7 @@ Now we have this:
 
 Ok, it's `NetUtil.LOCALHOST` being referenced, so let's add a substitution for it as well (to `NetUtilSubstitutions`):
 
+```java
     @Alias
     @InjectAccessors(NetUtilLocalhostAccessor.class)
     public static InetAddress LOCALHOST;
@@ -510,6 +519,7 @@ Ok, it's `NetUtil.LOCALHOST` being referenced, so let's add a substitution for i
             ADDR = addr;
         }
     }
+```
 
 This makes the final error go away.
 
