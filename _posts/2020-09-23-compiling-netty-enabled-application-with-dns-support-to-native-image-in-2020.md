@@ -55,7 +55,7 @@ public class Main {
 It just creates a event loop group and a DNS resolver group (this is what a client like Redisson would do
 at initialization).
 
-The corresponding dependendies in the `pom.xml`:
+The corresponding dependencies in the `pom.xml`:
 
 ```xml
 <properties>
@@ -505,7 +505,7 @@ Ok, it's `NetUtil.LOCALHOST` being referenced, so let's add a substitution for i
 @InjectAccessors(NetUtilLocalhostAccessor.class)
 public static InetAddress LOCALHOST;
 
-// NOTE: this is the simpliest implementation I could invent to just demonstrate the idea; it is probably not
+// NOTE: this is the simplest implementation I could invent to just demonstrate the idea; it is probably not
 // too efficient. An efficient implementation would only have getter and it would compute the InetAddress
 // there; but the post is already very long, and NetUtil.LOCALHOST computation logic in Netty is rather cumbersome.
 private static class NetUtilLocalhostAccessor {
