@@ -212,6 +212,8 @@ the `readResolve()` invocation as we probably broke some invariant while deseria
 4. One thing that is not listed here is that the deepest non-serializable superclass of the given class still must
 have a no-arg constructor for this to work (this is a restriction of Java Serialization)
 
+Yet another problem is that this approach is not too fast: we simply do too much work to prepare the payload.
+
 All this means that this approach will fail to instantiate many classes, alas.
 
 Another catch here is that only
