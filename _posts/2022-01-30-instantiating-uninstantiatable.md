@@ -196,7 +196,7 @@ class SerializableInstantiation implements Instantiation {
 ```
 
 That's quite a bulk of code, but the idea is simple: we construct a byte array that would be produced by Java
-Serialization if it serialized an instance of the given class, but with a slight modification: no fields
+Serialization if it serialized an instance of the given class, but with a slight modification: no field
 data remains here (because we want to get an empty object).
 
 Looks like a hack, and it is a hack, but, surprisingly, it works. Well... at least *sometimes*.
