@@ -199,7 +199,7 @@ That's quite a bulk of code, but the idea is simple: we construct a byte array t
 Serialization if it serialized an instance of the given class, but with a slight modification: no field
 data remains here (because we want to get an empty object).
 
-Looks like a hack, and it is a hack, but, surprisingly, it works. Well... at least *sometimes*.
+Looks like a hack, and it is a hack, but, surprisingly, it works. Well... *sometimes*.
 
 Look at the `supports()` method that became pretty bulky. As you can see:
 
