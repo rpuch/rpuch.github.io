@@ -373,6 +373,60 @@ the current solution could break and will need to be fixed (or maybe it will bec
 3. No constructor is invoked **at all**, so any invariant it establishes can be broken now (although this happens
 for Java Serialization, too, but there the author of the class has ability to intervene using special methods).
 
+# And Rule Them All
+
+Ok, now you have a few instantiation strategies. How do you pick which one to use? A possible way is to employ a
+'best effort' approach: start with the least dangerous and best defined strategy, then, if it fails, try another
+one and so on. This can be achieved using the [Composite](https://en.wikipedia.org/wiki/Composite_pattern) pattern.
+
+```java
+class BestEffortInstantiation implements Instantiation {
+    private final List<Instantiation> delegates;
+
+    BestEffortInstantiation(Instantiation... delegates) {
+        this.delegates = List.of(delegates);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean supports(Class<?> objectClass) {
+        for (Instantiation delegate : delegates) {
+            if (delegate.supports(objectClass)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Object newInstance(Class<?> objectClass) throws InstantiationException {
+        for (Instantiation delegate : delegates) {
+            if (delegate.supports(objectClass)) {
+                return delegate.newInstance(objectClass);
+            }
+        }
+
+        throw new InstantiationException("No delegate supports " + objectClass);
+    }
+}
+```
+
+And then
+
+```java
+Instantiation ultimateInstantiation = new BestEffortInstantiation(
+        new NoArgConstructorInstantiation(),
+        new ObjectStreamClassInstantiation(),
+        new UnsafeInstantiation()
+);
+```
+
+`ultimateInstantiation` will first try to instantiate a class using its no-arg constructor, then, if it's
+`Serializable`, it will try the standard Serialization mechanics, and only then will it fall back to
+the almighty allocation via `Unsafe`.
+
 # Conclusion
 
 Sometimes you need to instantiate a class. The easiest way is to use a no-arg constructor, but if such constructor
