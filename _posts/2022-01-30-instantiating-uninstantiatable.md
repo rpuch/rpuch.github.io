@@ -78,7 +78,7 @@ But how do we instantiate a class that does not have a no-arg constructor? We co
 use it, but we would not know what parameters to pass to it.
 
 Wait, [Java Serialization](https://docs.oracle.com/javase/7/docs/platform/serialization/spec/serialTOC.html)
-is doing the same thing, right? They have some magical tools to instantiate an object that
+is doing the same thing, right? They have some magical tools to instantiate a class that
 has does not have a no-arg constructor, so let's use these superpowers!
 
 # Riding Java Serialization
