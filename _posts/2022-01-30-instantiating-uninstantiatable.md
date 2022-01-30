@@ -368,7 +368,7 @@ although it would probably be wise to disallow instantiation of some classes (li
 On the other hand, this approach has some disadvantages:
 
 1. You need to be careful with the power you get. It's unsafe, after all!
-2. Java developers make it harder and harder to obtain and use `Unsafe` instances with time. At some moment
+2. JDK developers make it harder and harder to obtain and use `Unsafe` instances with time. At some moment
 the current solution could break and will need to be fixed (or maybe it will become impossible to use at all).
 3. No constructor is invoked **at all**, so any invariant it establishes can be broken now (although this happens
 for Java Serialization, too, but there the author of the class has ability to intervene using special methods).
