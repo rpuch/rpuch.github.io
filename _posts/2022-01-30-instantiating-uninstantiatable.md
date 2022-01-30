@@ -303,7 +303,7 @@ But, as always with Java Serialization, there are same basic restrictions:
 1. The class must be `Serializable`
 2. Its deepest non-serializable superclass must have a no-arg constructor
 
-So, are we doomed to obey the Java Serialization restrictions (or forget about instantiation if there
+So, are we doomed to obey the Java Serialization restrictions (or forget about instantiation if a
 no-arg constructor is not present)?
 
 Fortunately, no. We still haven't tried the most powerful tool of all.
